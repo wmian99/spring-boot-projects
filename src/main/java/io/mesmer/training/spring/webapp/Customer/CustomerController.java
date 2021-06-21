@@ -7,36 +7,35 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/customers")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
     // List Customers
-    @RequestMapping("")
+    @RequestMapping("/customers")
     public List<Customer> getCustomers(){
         return customerService.getAllCustomers();
     }
 
     // Get A Customer
-    @RequestMapping("/{id}")
+    @RequestMapping("/customers/{id}")
     public Optional<Customer> getCustomer(@PathVariable int id){
         return customerService.getCustomer(id);
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST,value = "/customers")
     public void createCustomers(@RequestBody Customer customer){
         customerService.createCustomer(customer);
     }
 
-    @RequestMapping(method = RequestMethod.PUT,value="/{id}")
+    @RequestMapping(method = RequestMethod.PUT,value="/customers/{id}")
     public void updateCustomers(@RequestBody Customer customer, @PathVariable int id){
         customerService.updateCustomer(customer);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteCustomers/{id}")
     public void deleteCustomer(@PathVariable int id){
         customerService.deleteCustomer(id);
     }
