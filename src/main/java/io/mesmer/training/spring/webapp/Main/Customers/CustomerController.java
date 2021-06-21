@@ -1,4 +1,4 @@
-package io.mesmer.training.spring.webapp.Customer;
+package io.mesmer.training.spring.webapp.Main.Customers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +11,11 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @RequestMapping("")
+    public String index(){
+        return "Greetings Customers!";
+    }
 
     // List Customers
     @RequestMapping("/customers")

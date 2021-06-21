@@ -1,4 +1,4 @@
-package io.mesmer.training.spring.webapp.Customer;
+package io.mesmer.training.spring.webapp.Main.Customers;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

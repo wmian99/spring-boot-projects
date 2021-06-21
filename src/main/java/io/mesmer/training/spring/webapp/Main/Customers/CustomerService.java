@@ -1,4 +1,4 @@
-package io.mesmer.training.spring.webapp.Customer;
+package io.mesmer.training.spring.webapp.Main.Customers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
