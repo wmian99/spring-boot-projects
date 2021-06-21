@@ -3,6 +3,7 @@ package io.mesmer.training.spring.webapp.Main.tests;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.mesmer.training.spring.webapp.Main.Customers.Customer;
 import io.mesmer.training.spring.webapp.Main.Customers.CustomerRepository;
+import io.mesmer.training.spring.webapp.Main.Products.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,8 @@ public class CustomerControllerTest {
     @Test
     public void testCreation() throws Exception {
         ObjectMapper mapper = null;
-        String json = mapper.writeValueAsString(new Customer(99,"test_cust","ind","test@e.com"));
+        Product p = new Product();
+        String json = mapper.writeValueAsString(new Customer(99,"test_cust","ind","test@e.com",p));
         mvc.perform(MockMvcRequestBuilders.post("/customers")
                 .content(json).contentType(MediaType.APPLICATION_JSON)).
                 andExpect(status().isCreated());

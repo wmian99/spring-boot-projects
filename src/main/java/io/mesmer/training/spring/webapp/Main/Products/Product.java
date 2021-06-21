@@ -1,8 +1,10 @@
 package io.mesmer.training.spring.webapp.Main.Products;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.mesmer.training.spring.webapp.Main.Customers.Customer;
+
+import javax.persistence.*;
 
 @Entity
 public class Product {
@@ -13,16 +15,22 @@ public class Product {
     private String company;
     private int cost;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cust_id")
+    @JsonIgnore
+    private Customer customer;
+
 
     public Product(){
 
     }
 
-    public Product(int id, String name, String company, int cost) {
+    public Product(int id, String name, String company, int cost, Customer c) {
         this.id = id;
         this.name = name;
         this.company = company;
         this.cost = cost;
+        this.customer = c;
     }
 
     public void setId(int id) {
@@ -43,6 +51,14 @@ public class Product {
 
     public int getId() {
         return id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getName() {

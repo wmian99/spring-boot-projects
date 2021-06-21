@@ -1,9 +1,12 @@
 package io.mesmer.training.spring.webapp.Main.Customers;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.mesmer.training.spring.webapp.Main.Products.Product;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customer_table")
@@ -14,6 +17,9 @@ public class Customer {
     private String name;
     private String country;
     private String email;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="cust_id")
+    private List<Product> products = new ArrayList<>();
 
     public int getCustomer_id() {
         return id;
@@ -47,15 +53,24 @@ public class Customer {
         return email;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public Customer(){
 
     }
 
-    public Customer(int customer_id, String name, String country, String email) {
+    public Customer(int customer_id, String name, String country, String email, Product p) {
         this.id = customer_id;
         this.name = name;
         this.country = country;
         this.email = email;
+        products.add(p);
     }
 
 }
