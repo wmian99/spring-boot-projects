@@ -3,7 +3,6 @@ package io.mesmer.training.spring.webapp.Main.tests;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.mesmer.training.spring.webapp.Main.Customers.Customer;
 import io.mesmer.training.spring.webapp.Main.Customers.CustomerRepository;
-import io.mesmer.training.spring.webapp.Main.Customers.WebAppApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(classes= WebAppApplication.class)
+@SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
