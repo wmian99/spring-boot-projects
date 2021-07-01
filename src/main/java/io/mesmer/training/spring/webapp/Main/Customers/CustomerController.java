@@ -37,7 +37,7 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.PUT,value="/customers/{id}")
     public void updateCustomers(@RequestBody Customer customer, @PathVariable int id){
-        customerService.updateCustomer(customer);
+        customerService.updateCustomer(customer,id);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteCustomers/{id}")

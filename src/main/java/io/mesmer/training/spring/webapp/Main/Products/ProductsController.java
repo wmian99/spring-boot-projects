@@ -28,6 +28,6 @@ public class ProductsController {
 
     @RequestMapping(method = RequestMethod.PUT,value = "/products/{id}")
     public void buildProduct(@RequestBody Product product, @PathVariable int id){
-        productService.updateProduct(product);
+        productService.updateProduct(product,id);
     }
 }

@@ -27,7 +27,14 @@ public class ProductService {
         productsRepository.save(product);
     }
 
-    public void updateProduct(Product product) {
-        productsRepository.save(product);
+    public void updateProduct(Product product,int id) {
+
+        Optional<Product> prod= productsRepository.findById(id);
+        Product product1 = prod.get();
+        product1.setName(product.getName());
+        product1.setCompany(product.getCompany());
+        product1.setCost(product.getCost());
+        product1.setCustomer(product.getCustomer());
+        productsRepository.save(product1);
     }
 }
